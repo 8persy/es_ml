@@ -1,0 +1,16 @@
+transformers>=4.41.0
+torch>=2.2.0
+tensorflow==2.15.0
+tensorflow-hub>=0.16.1
+numpy
+pandas
+scikit-learn
+opencv-python
+pillow
+soundfile
+librosa
+matplotlib
+fastapi
+uvicorn[standard]
+python-multipart
+timm
