@@ -49,7 +49,7 @@ cd vision
 Пропишите команду (вместо img.png название вашего файла с изображением внутри директории data):
 
 ```
-python .\classify_torch.py --image .\data\img.png
+python classify_torch.py --image .\data\img.png
 ```
 
 ## Модель: детекция объектов на видео

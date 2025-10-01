@@ -47,4 +47,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# python .\classify_torch.py --image .\data\img.png
+# python classify_torch.py --image .\data\img.png
