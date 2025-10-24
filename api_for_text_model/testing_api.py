@@ -1,9 +1,11 @@
 import requests
 
+text = input('Введите желаемый текст, для обработки: ')
+
 try:
     r = requests.post(
         "http://localhost:8000/predict",
-        json={"texts": ["Очень понравился фильм!", "Не подошло, скучно"]}
+        json={"texts": [text]}
     )
 except requests.exceptions.RequestException as e:
     print(f"Error with request: {e}")
