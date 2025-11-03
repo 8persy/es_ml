@@ -33,6 +33,7 @@ body {
 .messages {
   flex: 1;
   min-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
   background-color: #121212;
   padding: 10px;
