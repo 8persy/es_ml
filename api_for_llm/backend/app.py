@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from gpt4all import GPT4All
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 
 model = GPT4All("gpt4all-falcon-newbpe-q4_0.gguf", device="cpu")
 session = model.chat_session()
@@ -36,3 +37,7 @@ def chat(req: ChatRequest):
 @app.get("/")
 def root():
     return {"message": "API для LLM"}
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, port=8080)
