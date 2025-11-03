@@ -4,8 +4,7 @@ from gpt4all import GPT4All
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-model = GPT4All("gpt4all-falcon-newbpe-q4_0.gguf", device="cpu")
-session = model.chat_session()
+model = GPT4All("Meta-Llama-3-8B-Instruct.Q4_0.gguf")
 
 app = FastAPI(title="Local LLM API")
 
@@ -20,18 +19,17 @@ app.add_middleware(
 
 class ChatRequest(BaseModel):
     prompt: str
-    max_tokens: int | None = 200
-    temp: float | None = 0.7
 
 
 @app.post("/chat")
 def chat(req: ChatRequest):
-    response = model.generate(
-        req.prompt,
-        max_tokens=req.max_tokens,
-        temp=req.temp,
-    )
-    return {"response": response}
+    with model.chat_session() as session:
+        response = session.generate(
+            req.prompt,
+            max_tokens=400,
+            temp=0.4,
+        )
+    return {"response": response.strip()}
 
 
 @app.get("/")
