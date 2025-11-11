@@ -7,6 +7,17 @@ pip install -r requirements.txt
 ```
 Создайте файл .env в корне директории
 
+## ИИ агент
+
+Запустите файл сервера llm.py внутри директории api_for_llm/backend
+
+Затем запустите фронт, перейдя в директорию api_for_llm/frontend_for_ai_agent:
+
+```
+cd api_for_llm/frontend_for_ai_agent
+npm run dev
+```
+
 ## API для LLM
 
 Запустите файл сервера app.py внутри директории api_for_llm/backend
@@ -14,6 +25,7 @@ pip install -r requirements.txt
 Затем запустите фронт, перейдя в директорию api_for_llm/frontend:
 
 ```
+cd api_for_llm/frontend
 npm run dev
 ```
 
