@@ -6,6 +6,18 @@ interface Message {
     text: string;
 }
 
+interface NewsArticle {
+    title: string;
+    url: string;
+    source: string;
+}
+
+interface ApiResponse {
+    keyword?: string;
+    news?: NewsArticle[];
+    error?: string;
+}
+
 function App() {
     const [input, setInput] = useState<string>("");
     const [messages, setMessages] = useState<Message[]>([]);
@@ -27,8 +39,25 @@ function App() {
 
             if (!res.ok) throw new Error("Ошибка сети");
 
-            const data: { response: string } = await res.json();
-            const botMessage: Message = { sender: "bot", text: data.response };
+            const data: ApiResponse = await res.json();
+
+            let botText = "";
+
+            if (data.error) {
+                botText = `Ошибка: ${data.error}`;
+            } else if (!data.news || data.news.length === 0) {
+                botText = `Не удалось найти новости по теме "${data.keyword}".`;
+            } else {
+                botText = `Вот новости на тему: "${data.keyword}"\n\n`;
+                botText += data.news
+                    .map(
+                        (article, idx) =>
+                            `${idx + 1}. [${article.title}] (${article.url}) — ${article.source}`
+                    )
+                    .join("\n");
+            }
+
+            const botMessage: Message = { sender: "bot", text: botText };
             setMessages((prev) => [...prev, botMessage]);
         } catch (err) {
             console.error(err);
@@ -58,6 +87,7 @@ function App() {
                             className={`message ${
                                 msg.sender === "user" ? "user" : "bot"
                             }`}
+                            style={{ whiteSpace: "pre-line" }}
                         >
                             {msg.text}
                         </div>
