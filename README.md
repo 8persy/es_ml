@@ -5,11 +5,33 @@
 ```
 pip install -r requirements.txt
 ```
-Создайте файл .env в корне дериктории
+Создайте файл .env в корне директории
 
-## APi для модели определния тональности текста
+## ИИ агент
 
-Для использования модели на cpu пропигшите в .env
+Запустите файл сервера llm.py внутри директории api_for_llm/backend
+
+Затем запустите фронт, перейдя в директорию api_for_llm/frontend_for_ai_agent:
+
+```
+cd api_for_llm/frontend_for_ai_agent
+npm run dev
+```
+
+## API для LLM
+
+Запустите файл сервера app.py внутри директории api_for_llm/backend
+
+Затем запустите фронт, перейдя в директорию api_for_llm/frontend:
+
+```
+cd api_for_llm/frontend
+npm run dev
+```
+
+## API для модели определния тональности текста
+
+Для использования модели на cpu пропишите в .env
 
 ```
 MODEL_DEVICE=cpu
