@@ -42,7 +42,6 @@ def main():
     scores_np = scores.numpy()
     mean_scores = np.mean(scores_np, axis=0)
 
-    # подгружаем список классов
     with urllib.request.urlopen(CLASS_MAP_URL) as resp:
         class_map_csv = resp.read()
     class_df = pd.read_csv(io.BytesIO(class_map_csv))
