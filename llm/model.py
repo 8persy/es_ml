@@ -15,8 +15,8 @@ def main():
 
             response = model.generate(
                 user_input,
-                max_tokens=200,   # длина ответа
-                temp=0.7,         # "креативность"
+                max_tokens=200,
+                temp=0.7,
             )
             print("🤖 Модель:", response)
 

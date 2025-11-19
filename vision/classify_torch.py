@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import argparse
-import json
 import torch
 from torchvision import models, transforms
 from PIL import Image
