@@ -87,7 +87,7 @@ def fetch_news(keyword: str):
         }
         for a in data["articles"]
     ]
-    return {"news": articles}
+    return {"news": articles,"keyword": keyword}
 
 
 @app.post("/summarize")
